@@ -193,7 +193,7 @@ button.addEventListener('click', reverseString);
   "use strict";
   var playButton = $("#play-guessing-game");
   var guessButton = $('#try-this-number');
-  var guess = $("#number-guessed");
+  var guess = $("#number-guessed")
   var askToGuess = $('#number-guessing-msg');
   var form = $('#guessing-game-form');
   var number = 0;
@@ -201,8 +201,15 @@ button.addEventListener('click', reverseString);
   
 
   function startGame() {
+    //Generate random number for user to guess.
+    
+    // disable play button once clicked.
     playButton.prop( "disabled", true );
+
+    // generate random number. 
     var random_number = Math.ceil(Math.random() * 100);
+
+    // prints to browser
     askToGuess.html("Guess a number")
 
     // enable guess number field
@@ -210,34 +217,40 @@ button.addEventListener('click', reverseString);
     
     // enable guess button 
     guessButton.prop( "disabled", false );
-    
-    var n = guess.value;
-    console.log(n);
-
-
+    console.log(random_number);
+    return number = random_number;
 
 }
 
-
-
-  // function guessNumbers(number) {
-  //   event.preventDefault();
-  //   console.log(guess);
-
-  //   if (guess < number) {
-  //     askToGuess.html("Too low. Guess again.");  
-  //     }
-  //   else if (guess > number) {
-  //     askToGuess.html("Too high. Guess again.");  
-  //   }
-  // }
+  function guessNumbers() {
+    //User guesses until they guess the correct number.
   
+    // preventing form submission
+    event.preventDefault();
+
+    // turn user's guess into an integer
+    var numberGuess = guess.val();
+
+    // compare user's guess with number. user guesses until correct.
+    // once correct, play button enabled, guess field and button disabled.
+    if (numberGuess < number) {
+      askToGuess.html("Too low. Guess again.");  
+      }
+    else if (numberGuess > number) {
+      askToGuess.html("Too high. Guess again.");  
+    }
+    else {
+      askToGuess.html("Congrats! You guessed the number!");
+      playButton.prop( "disabled", false );
+      guess.prop( "disabled", true );
+      guessButton.prop( "disabled", true );  
+    }
+  }
   
-
-
-
-  // guessButton.on('click', guessNumbers);
+  // play and guess button event handlers
+  guessButton.on('click', guessNumbers);
   playButton.on('click', startGame);
+
 </script>
 
 
