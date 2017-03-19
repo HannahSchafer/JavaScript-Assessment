@@ -319,16 +319,13 @@ button.addEventListener('click', reverseString);
     }
 
   // put your code here
-     // console.log(attackResult + numDead);
-    
-
+  
   var attackButton = $('#attack');
-  var outcome = $(".t-rex-results");
 
   function getAttackInfo() {
     event.preventDefault();
-    var target = $("#t-rex-target").text();
-    $.post("/t-rex-attack.json", {"attack-target" : target }, showTRexResults);   
+    var target = $( "input[name='attack-target']").val();
+    $.post("/t-rex-attack.json", {'attack-target' : target }, showTRexResults);   
   }
 
   attackButton.on('click', getAttackInfo);
