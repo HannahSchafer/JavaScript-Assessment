@@ -316,9 +316,22 @@ button.addEventListener('click', reverseString);
     $("#t-rex-response").append(attackResult);
     $("#t-rex-casualties").append("Innocent bystanders harmed: " + numDead);
     $("#t-rex-img").append(tRexPhoto);
-  }
+    }
 
   // put your code here
+     // console.log(attackResult + numDead);
+    
+
+  var attackButton = $('#attack');
+  var outcome = $(".t-rex-results");
+
+  function getAttackInfo() {
+    event.preventDefault();
+    var target = $("#t-rex-target").text();
+    $.post("/t-rex-attack.json", {"attack-target" : target }, showTRexResults);   
+  }
+
+  attackButton.on('click', getAttackInfo);
 
 </script>
 
