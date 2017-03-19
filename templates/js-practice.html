@@ -37,6 +37,14 @@
 <script>
   "use strict";
   // code here for above problem
+  var button = document.getElementById('popup-alert-button');
+
+  function alertClick() {
+    alert("POPUP!");
+  }
+
+  button.addEventListener('click', alertClick);
+
 </script>
 
 
@@ -76,9 +84,25 @@
 </fieldset>
 
 <script>
-  "use strict";
+    "use strict";
+    // code here for the above problem
+    var multbtn = document.getElementById('multiply-btn');
+    var mults = document.getElementById('mults-of');
+    var max = document.getElementById('max');
+    var allMultiples = [];
 
-  // code here for the above problem
+
+    function getMultiples(evt) {
+        evt.preventDefault();
+        while (mults <= max) {
+          allMultiples.push(mults);
+          mults += mults;
+          console.log(mults);}
+
+        console.log(allMultiples);}
+
+    multbtn.addEventListener('click', getMultiples);
+
 
 </script>
 
@@ -106,6 +130,7 @@
   When you click this button, pop up an alert box. <b>Remember, you cannot change the HTML!</b>
 </p>
 
+<script src="https://code.jquery.com/jquery.js"></script>
 <fieldset>
   <input type="button" class="find-me" value="Pop-Up Please!">
 </fieldset>
@@ -113,7 +138,14 @@
 <script>
   "use strict";
   // code here for above problem
+  function alertBox(evt) {
+    alert("Alert Box!");
+  }
+
+  $('#find-me').on('click', alertBox);
+
 </script>
+
 
 <div class="hint">
   <div>

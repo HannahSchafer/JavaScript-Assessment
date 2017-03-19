@@ -5,6 +5,7 @@
   <title>Skills JavaScript</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/styles.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body class="container">
 
@@ -39,6 +40,15 @@
 <script>
   "use strict";
   // code here for above-problem
+  var button = document.getElementById("change-hello-to-goodbye-button");
+  var message = document.getElementById("message-to-change");
+
+  function changeGreeting() {
+    message.innerHTML = ("Goodbye");
+  }
+
+  button.addEventListener('click', changeGreeting);
+
 </script>
 
 <div class="hint">
@@ -67,6 +77,15 @@
 <script>
   "use strict";
   // code here for above problem
+  var submit = document.getElementById("prevent-form-submission-button");
+
+  function preventSubmit() {
+    event.preventDefault();
+    alert("Alert!");
+  }
+
+  submit.addEventListener('click', preventSubmit);
+
 </script>
 
 <div class="hint">
@@ -89,22 +108,20 @@
 <script>
   "use strict";
 
-//  Here's a stub of a function you can use!
 
-//  function reverseString() {
-//    var msg = "Porcupines are cute";
-//
-//    // do some stuff here to reverse that string into a new variable
-//    var newMsg = "This should be the reversed string";
-//
-//    alert(newMsg);
-//  }
+var button = document.getElementById('reverse-string-button');
 
-// Here's a stub of event stuff you could use
-//
+ function reverseString() {
+   var msg = "Porcupines are cute";
+   var msgSplit = msg.split("");
+   var msgReverse = msgSplit.reverse();
+   var newMsg = msgReverse.join("");
 
-//  var button = document.getElementById('reverse-string-button');
-//  button.addEventListener('click', reverseString);
+   alert(newMsg);
+ }
+button.addEventListener('click', reverseString);
+
+
 </script>
 
 
@@ -118,7 +135,6 @@
     Remember you need a script tag in the head of this page that pulls in jQuery's source code.
   </div>
 </div>
-
 
 
 <h3>Down With Cats!</h3>
@@ -136,7 +152,15 @@
 
 <script>
   "use strict";
-  // put your code here
+  var image = $('#kittenz-rule');
+
+  function makePuppy() {
+    image.attr('src', 'static/puppy.jpg');
+  }
+
+  image.on('dblclick', makePuppy);
+  
+
 </script>
 
 <div class="hint">
@@ -152,7 +176,7 @@
   Make the classic "guess-a-number-between-1-and-100" in JavaScript.
 </p>
 <p>
-  The game should start when the user presses the play button. The funtion should first disable the button. The function should then pick a random integer from 1 to 100. Use the div with id 'number-guessing-msg' to ask the user to guess a number. This div will also display whether the guess was too high or too low. Once the user guesses the right number, three things should happen: first, the div should congratulate the player; second, the form should be disabled; third, the play button should be re-enabled.
+  The game should start when the user presses the play button. The function should first disable the button. The function should then pick a random integer from 1 to 100. Use the div with id 'number-guessing-msg' to ask the user to guess a number. This div will also display whether the guess was too high or too low. Once the user guesses the right number, three things should happen: first, the div should congratulate the player; second, the form should be disabled; third, the play button should be re-enabled.
 </p>
 
 <fieldset>
@@ -167,7 +191,53 @@
 
 <script>
   "use strict";
-  // put your code here
+  var playButton = $("#play-guessing-game");
+  var guessButton = $('#try-this-number');
+  var guess = $("#number-guessed");
+  var askToGuess = $('#number-guessing-msg');
+  var form = $('#guessing-game-form');
+  var number = 0;
+  
+  
+
+  function startGame() {
+    playButton.prop( "disabled", true );
+    var random_number = Math.ceil(Math.random() * 100);
+    askToGuess.html("Guess a number")
+
+    // enable guess number field
+    guess.prop( "disabled", false );
+    
+    // enable guess button 
+    guessButton.prop( "disabled", false );
+    
+    var n = guess.value;
+    console.log(n);
+
+
+
+}
+
+
+
+  // function guessNumbers(number) {
+  //   event.preventDefault();
+  //   console.log(guess);
+
+  //   if (guess < number) {
+  //     askToGuess.html("Too low. Guess again.");  
+  //     }
+  //   else if (guess > number) {
+  //     askToGuess.html("Too high. Guess again.");  
+  //   }
+  // }
+  
+  
+
+
+
+  // guessButton.on('click', guessNumbers);
+  playButton.on('click', startGame);
 </script>
 
 
